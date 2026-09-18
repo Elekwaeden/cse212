@@ -25,14 +25,28 @@ public class Maze
         _mazeMap = mazeMap;
     }
 
-    // TODO Problem 4 - ADD YOUR CODE HERE
+    // PLAN (applies to all four Move functions below):
+    // 1. Look up the current (x, y) position in the maze dictionary to get its
+    //    boolean array of valid directions: [left, right, up, down].
+    // 2. Check the boolean value for the direction being requested.
+    // 3. If it's false, there is a wall - throw an InvalidOperationException
+    //    with the message "Can't go that way!".
+    // 4. If it's true, update the current position:
+    //    - Left decreases x by 1, Right increases x by 1
+    //    - Up decreases y by 1, Down increases y by 1
+
     /// <summary>
     /// Check to see if you can move left.  If you can, then move.  If you
     /// can't move, throw an InvalidOperationException with the message "Can't go that way!".
     /// </summary>
     public void MoveLeft()
     {
-        // FILL IN CODE
+        if (!_mazeMap[(_currX, _currY)][0])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        _currX -= 1;
     }
 
     /// <summary>
@@ -41,7 +55,12 @@ public class Maze
     /// </summary>
     public void MoveRight()
     {
-        // FILL IN CODE
+        if (!_mazeMap[(_currX, _currY)][1])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        _currX += 1;
     }
 
     /// <summary>
@@ -50,7 +69,12 @@ public class Maze
     /// </summary>
     public void MoveUp()
     {
-        // FILL IN CODE
+        if (!_mazeMap[(_currX, _currY)][2])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        _currY -= 1;
     }
 
     /// <summary>
@@ -59,7 +83,12 @@ public class Maze
     /// </summary>
     public void MoveDown()
     {
-        // FILL IN CODE
+        if (!_mazeMap[(_currX, _currY)][3])
+        {
+            throw new InvalidOperationException("Can't go that way!");
+        }
+
+        _currY += 1;
     }
 
     public string GetStatus()
